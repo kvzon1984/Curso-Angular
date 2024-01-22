@@ -10,14 +10,17 @@ import { Character } from '../../interfaces/character.interfece';
 export class ListDbzComponent {
 
   @Output()
-  public emitDeleteCharacter = new EventEmitter<Character>();
+  public emitDeleteCharacter = new EventEmitter<string>();
 
   @Input()
   public characterList: Character[] = [
     { name: 'Trunks', power: 100 }
   ]
 
-  onDeleteChacacter( character: Character ):void {
-    this.emitDeleteCharacter.emit( character );
+  onDeleteChacacter( id?: string ):void {
+
+    if(!id) return;
+
+    this.emitDeleteCharacter.emit( id );
   }
 }
